@@ -13,8 +13,25 @@ namespace SpeedyAir
     {
         static void Main(string[] args)
         {
-            GenerateLoadController generateLoadController = new GenerateLoadController(new OrderService(),  new ScheduleService());
-            generateLoadController.GenerateLoad();
+            while (true)
+            {
+                Console.WriteLine("UserStory1:<1>\nUserStory2:<2>\nExist:<Any Key>");
+                string result = Console.ReadLine();
+                if (result == "1")
+                {
+                    ScheduleController scheduleController = new ScheduleController(new ScheduleService());
+                    scheduleController.ScheduleByFlight();
+                }
+                else if (result == "2")
+                {
+                    GenerateLoadController generateLoadController = new GenerateLoadController(new OrderService(), new ScheduleService());
+                    generateLoadController.GenerateLoad();
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
     }
 }
